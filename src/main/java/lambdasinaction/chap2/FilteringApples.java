@@ -1,4 +1,7 @@
+package lambdasinaction.chap2;
+
 import java.util.*;
+
 public class FilteringApples{
 
 	public static void main(String ... args){

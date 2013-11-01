@@ -1,3 +1,5 @@
+package lambdasinaction.chap2;
+
 public class MeaningOfThis
 {
 	public final int value = 4;

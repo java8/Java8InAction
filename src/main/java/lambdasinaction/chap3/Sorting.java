@@ -1,5 +1,8 @@
+package lambdasinaction.chap3;
+
 import java.util.*;
 import static java.util.Comparator.comparing;
+
 public class Sorting {
 
 	public static void main(String...args){
