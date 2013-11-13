@@ -7,6 +7,16 @@ You can purchase the early access here: [http://manning.com/urma/](http://mannin
 
 We are very keen to hear your feedback and improve the book based on your comments!
 
+The source code for all examples can be found in the directory [src/main/java/lambdasinaction](https://github.com/java8/LambdasInAction/tree/master/src/main/java/lambdasinaction)
+
+* Chapter 1: Introduction
+* Chapter 2: Passing Code/Behaviour Parameterisation
+* Chapter 3: Lambda expressions
+* Chapter 4: Streams
+* Chapter 5: Collectors
+
+We will update the repository as we update the book. Stay tuned!
+
 ### Make sure to have JDK8 installed
 For example:
 
