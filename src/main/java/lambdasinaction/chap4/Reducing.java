@@ -17,8 +17,5 @@ public class Reducing{
         
         int max = numbers.stream().reduce(0, (a, b) -> Integer.max(a, b));
         System.out.println(max);
-               
     }
-
-    
 }

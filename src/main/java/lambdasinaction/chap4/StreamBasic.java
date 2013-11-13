@@ -14,12 +14,7 @@ public class StreamBasic {
                                  .filter(d -> d.getCalories() > 300)
                                  .map(Dish::getName)
                                  .limit(3)
-                                 .collect(toList());
-              
+                                 .collect(toList());              
         System.out.println(names);
-        
-    
     }
-
-
 }

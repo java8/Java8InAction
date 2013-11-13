@@ -7,7 +7,6 @@ import static lambdasinaction.chap4.Dish.menu;
 public class Finding{
 
     public static void main(String...args){
-    
         if(isVegetarianFriendlyMenu()){
             System.out.println("Vegetarian friendly");
         }
@@ -17,7 +16,6 @@ public class Finding{
         
         Optional<Dish> dish = findVegetarianDish();
         dish.ifPresent(d -> System.out.println(d.getName()));
-               
     }
     
     private static boolean isVegetarianFriendlyMenu(){

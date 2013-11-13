@@ -15,9 +15,5 @@ public class Filtering{
                .forEach(System.out::println);
 
         numbers.stream().limit(20).forEach(System.out::println);
-        
     }
-    
-    
-    
 }

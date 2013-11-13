@@ -13,7 +13,6 @@ public class Mapping{
                                      .map(Dish::getName)
                                      .collect(toList());
         System.out.println(dishNames);
-    
         
         // map
         List<String> words = Arrays.asList("Hello", "World");
@@ -38,7 +37,6 @@ public class Mapping{
                                  )
                                 .filter(pair -> (pair[0] + pair[1]) % 3 == 0)
                                 .collect(toList());
-        pairs.forEach(e -> System.out.println("(" + e[0] + ", " + e[1] + ")"));
-               
+        pairs.forEach(pair -> System.out.println("(" + pair[0] + ", " + pair[1] + ")"));
     }
 }
