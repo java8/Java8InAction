@@ -13,7 +13,7 @@ public class ExecuteAround {
 	}
 
 	public static String processFile(BufferedReaderProcessor p) throws IOException {
-		try(BufferedReader br = new BufferedReader(new FileReader("src/main/java/lambdasinaction/chap3/data.txt"))){
+		try(BufferedReader br = new BufferedReader(new FileReader("lambdasinaction/chap3/data.txt"))){
 			return p.process(br);
 		}
 

@@ -4,8 +4,7 @@ import java.util.*;
 import java.util.stream.*;
 import static java.util.stream.Collectors.toList;
 
-import lambdasinaction.chap5.Dish;
-import static lambdasinaction.chap5.Dish.menu;
+import static lambdasinaction.chap4.Dish.menu;
 
 public class StreamBasic {
 

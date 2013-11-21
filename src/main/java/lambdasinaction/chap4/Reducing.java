@@ -20,5 +20,11 @@ public class Reducing{
         
         Optional<Integer> min = numbers.stream().reduce(Integer::min);
         min.ifPresent(v -> System.out.println(v));
+    
+
+        int calories = menu.stream()
+                           .map(Dish::getCalories)
+                           .reduce(0, Integer::sum);
+        System.out.println("Number of calories:" + calories);
     }
 }
