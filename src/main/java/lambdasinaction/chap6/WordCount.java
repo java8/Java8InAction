@@ -32,7 +32,7 @@ public class WordCount {
 
     public static int countWords(String s) {
         //Stream<Character> stream = IntStream.range(0, s.length())
-        //                                    .mapToObj(i -> SENTENCE.charAt(i)).parallel();
+        //                                    .mapToObj(SENTENCE::charAt).parallel();
         Spliterator<Character> spliterator = new WordCounterSpliterator(s);
         Stream<Character> stream = StreamSupport.stream(spliterator, true);
 
@@ -41,8 +41,8 @@ public class WordCount {
 
     private static int countWords(Stream<Character> stream) {
         WordCounter wordCounter = stream.reduce(new WordCounter(0, true),
-                WordCounter::accumulate,
-                WordCounter::combine);
+                                                WordCounter::accumulate,
+                                                WordCounter::combine);
         return wordCounter.getCounter();
     }
 

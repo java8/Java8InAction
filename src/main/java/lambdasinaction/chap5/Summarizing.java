@@ -30,7 +30,7 @@ public class Summarizing {
     }
 
     private static Dish findMostCaloricDishUsingComparator() {
-        Comparator<Dish> dishCaloriesComparator = Comparator.comparing(Dish::getCalories);
+        Comparator<Dish> dishCaloriesComparator = Comparator.comparingInt(Dish::getCalories);
         BinaryOperator<Dish> moreCaloricOf = BinaryOperator.maxBy(dishCaloriesComparator);
         return menu.stream().collect(reducing(moreCaloricOf)).get();
     }
