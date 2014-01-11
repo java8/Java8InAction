@@ -1,0 +1,36 @@
+To try out the scenario described in section 7.1 on Evolving APIs you need to do the following:
+
+compile individual files as follows from the directory src/main/java:
+
+javac lambdasinaction/chap7/BasicList.java
+javac lambdasinaction/chap7/PrintingList.java
+javac lambdasinaction/chap7/Utils.java
+javac lambdasinaction/chap7/Application.java
+
+You can run the application and everything will work:
+
+java lambdasinaction/chap7/Application
+
+You can now modify the interface BasicList and add the method "forEach".
+Compile and run, no problem:
+
+javac lambdasinaction/chap7/BasicList.java
+
+Now modify Utils to use the new forEach method available on all kinds of BasicList. 
+Just uncomment the appropriate the line in Utils, compile, run, and you'll have a surprise!
+
+Exception in thread "main" java.lang.AbstractMethodError: lambdasinaction.chap7.PrintingList.forEach(Ljava/util/function/Consumer;)V
+	at lambdasinaction.chap7.Utils.process(Utils.java:6)
+	at lambdasinaction.chap7.Application.main(Application.java:8)
+	
+	
+Note also that recompiling the whole application will fail because PrintingList doesn't implement
+the new method forEach:
+
+javac lambdasinaction/chap7/PrintingList.java 
+lambdasinaction/chap7/PrintingList.java:6: error: PrintingList is not abstract and does not override abstract method forEach(Consumer<T>) in BasicList
+public class PrintingList<T> implements BasicList<T> {
+       ^
+  where T is a type-variable:
+    T extends Object declared in class PrintingList
+1 error
