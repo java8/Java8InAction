@@ -14,6 +14,8 @@ The source code for all examples can be found in the directory [src/main/java/la
 * Chapter 3: Lambda expressions
 * Chapter 4: Streams
 * Chapter 5: Collectors
+* Chapter 6: Parallel streams and performance
+* Chapter 7: Default methods
 
 We will update the repository as we update the book. Stay tuned!
 
