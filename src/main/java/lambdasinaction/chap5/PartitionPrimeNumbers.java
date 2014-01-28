@@ -17,7 +17,7 @@ public class PartitionPrimeNumbers {
     }
 
     public static Map<Boolean, List<Integer>> partitionPrimes(int n) {
-        return Stream.iterate(2, i -> i + 1).limit(n)
+        return Stream.iterate(2, i -> i + 1).limit(n-1)
                 .collect(partitioningBy(candidate -> isPrime(candidate)));
     }
 
@@ -28,7 +28,7 @@ public class PartitionPrimeNumbers {
     }
 
     public static Map<Boolean, List<Integer>> partitionPrimesWithCustomCollector(int n) {
-        return Stream.iterate(2, i -> i + 1).limit(n).collect(new PrimeNumbersCollector());
+        return Stream.iterate(2, i -> i + 1).limit(n-1).collect(new PrimeNumbersCollector());
     }
 
     public static boolean isPrime(List<Integer> primes, Integer candidate) {
