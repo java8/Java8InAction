@@ -1,13 +1,13 @@
-LambdasInAction
+Java8InAction
 ===============
 
-This repository contains all the source code for the examples and quizzes in the Java 8: Lambdas In Action book.
+This repository contains all the source code for the examples and quizzes in the book Java 8 in Action: Lambdas, Streams and functional-style programming.
 
 You can purchase the early access here: [http://manning.com/urma/](http://manning.com/urma/)
 
 We are very keen to hear your feedback and improve the book based on your comments!
 
-The source code for all examples can be found in the directory [src/main/java/lambdasinaction](https://github.com/java8/LambdasInAction/tree/master/src/main/java/lambdasinaction)
+The source code for all examples can be found in the directory [src/main/java/lambdasinaction](https://github.com/java8/Java8InAction/tree/master/src/main/java/lambdasinaction)
 
 * Chapter 1: Introduction
 * Chapter 2: Passing Code/Behaviour Parameterisation
@@ -15,7 +15,10 @@ The source code for all examples can be found in the directory [src/main/java/la
 * Chapter 4: Streams
 * Chapter 5: Collectors
 * Chapter 6: Parallel streams and performance
-* Chapter 7: Default methods
+* Chapter 7: Tools, testing, debugging
+* Chapter 8: Default methods
+* Chapter 9: Optional: a better alternative to null 
+* Chapter 10: CompletableFuture: composable asynchronous programming
 
 We will update the repository as we update the book. Stay tuned!
 
