@@ -78,4 +78,12 @@ public class BestPriceFinder {
                 .map(future -> future.thenApply(Quote::parse))
                 .map(future -> future.thenCompose(quote -> CompletableFuture.supplyAsync(() -> Discount.applyDiscount(quote), executor)));
     }
+
+    public void printPricesStream() {
+        long start = System.nanoTime();
+        CompletableFuture[] futures = findPriceStream("myPhone")
+                .map(f -> f.thenAccept(s -> System.out.println(s + " (done in " + ((System.nanoTime() - start) / 1_000_000) + " msecs)")))
+                .toArray(size -> new CompletableFuture[size]);
+        CompletableFuture.allOf(futures).join();
+    }
 }

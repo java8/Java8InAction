@@ -14,17 +14,7 @@ public class BestPriceFinderMain {
         //execute("sequential", () -> bestPriceFinder.findPriceSequential("myPhone"));
         //execute("parallel", () -> bestPriceFinder.findPriceParallel("myPhone"));
         //execute("composed CompletableFuture", () -> bestPriceFinder.findPrice("myPhone"));
-        printPricesStream();
-    }
-
-    private static void printPricesStream() {
-        long start = System.nanoTime();
-        List<CompletableFuture<Void>> futures =
-        bestPriceFinder.findPriceStream("myPhone")
-                       .map(f -> f.thenAccept(s -> System.out.println(s + " (find in " + ((System.nanoTime() - start) / 1_000_000) + " msecs)")))
-                       .collect(toList());
-
-        CompletableFuture.allOf(futures.toArray(new CompletableFuture[futures.size()])).join();
+        bestPriceFinder.printPricesStream();
     }
 
     private static void execute(String msg, Supplier<List<String>> s) {
