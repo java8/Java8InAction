@@ -11,9 +11,9 @@ public class BestPriceFinderMain {
     private static BestPriceFinder bestPriceFinder = new BestPriceFinder();
 
     public static void main(String[] args) {
-        //execute("sequential", () -> bestPriceFinder.findPriceSequential("myPhone"));
-        //execute("parallel", () -> bestPriceFinder.findPriceParallel("myPhone"));
-        //execute("composed CompletableFuture", () -> bestPriceFinder.findPrice("myPhone"));
+        execute("sequential", () -> bestPriceFinder.findPriceSequential("myPhone"));
+        execute("parallel", () -> bestPriceFinder.findPriceParallel("myPhone"));
+        execute("composed CompletableFuture", () -> bestPriceFinder.findPrice("myPhone"));
         bestPriceFinder.printPricesStream();
     }
 

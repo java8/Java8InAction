@@ -20,29 +20,29 @@ public class BestPriceFinder {
             return t;
         }
     });
-
 /*
     public List<String> findPriceSequential(String product) {
         return shops.stream()
                 .map(shop -> shop.getName() + " price is " + shop.calculatePrice(product))
-                .collect(Collectors.<String>toList());
+                .collect(Collectors.toList());
     }
 
     public List<String> findPriceParallel(String product) {
         return shops.parallelStream()
                 .map(shop -> shop.getName() + " price is " + shop.calculatePrice(product))
-                .collect(Collectors.<String>toList());
+                .collect(Collectors.toList());
     }
 
     public List<String> findPrice(String product) {
         List<CompletableFuture<String>> priceFutures =
                 shops.stream()
-                .map(shop -> CompletableFuture.supplyAsync(() -> shop.getName() + " price is " + shop.calculatePrice(product)))
-                .collect(Collectors.<CompletableFuture<String>>toList());
+                .map(shop -> CompletableFuture.supplyAsync(() -> shop.getName() + " price is "
+                        + shop.calculatePrice(product), executor))
+                .collect(Collectors.toList());
 
         List<String> prices = priceFutures.stream()
                 .map(CompletableFuture::join)
-                .collect(Collectors.<String>toList());
+                .collect(Collectors.toList());
         return prices;
         //return sequence(priceFutures).join();
     }
@@ -52,7 +52,7 @@ public class BestPriceFinder {
                 .map(shop -> shop.getPrice(product))
                 .map(Quote::parse)
                 .map(Discount::applyDiscount)
-                .collect(Collectors.<String>toList());
+                .collect(Collectors.toList());
     }
 
     public List<String> findPriceParallel(String product) {
@@ -60,7 +60,7 @@ public class BestPriceFinder {
                 .map(shop -> shop.getPrice(product))
                 .map(Quote::parse)
                 .map(Discount::applyDiscount)
-                .collect(Collectors.<String>toList());
+                .collect(Collectors.toList());
     }
 
     public List<String> findPrice(String product) {
@@ -69,7 +69,7 @@ public class BestPriceFinder {
 
         return priceFutures.stream()
                 .map(CompletableFuture::join)
-                .collect(Collectors.<String>toList());
+                .collect(Collectors.toList());
     }
 
     public Stream<CompletableFuture<String>> findPriceStream(String product) {
@@ -85,5 +85,7 @@ public class BestPriceFinder {
                 .map(f -> f.thenAccept(s -> System.out.println(s + " (done in " + ((System.nanoTime() - start) / 1_000_000) + " msecs)")))
                 .toArray(size -> new CompletableFuture[size]);
         CompletableFuture.allOf(futures).join();
+        System.out.println("All shops have now responded in " + ((System.nanoTime() - start) / 1_000_000) + " msecs");
     }
+
 }
