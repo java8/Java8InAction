@@ -33,8 +33,8 @@ public class PartitionPrimeNumbers {
 
     public static boolean isPrime(List<Integer> primes, Integer candidate) {
         double candidateRoot = Math.sqrt((double) candidate);
-        return primes.stream().filter(p -> p < candidateRoot).noneMatch(p -> candidate % p == 0);
-        //return takeWhile(primes, i -> i <= candidateRoot).stream().noneMatch(i -> candidate % i == 0);
+        //return primes.stream().filter(p -> p < candidateRoot).noneMatch(p -> candidate % p == 0);
+        return takeWhile(primes, i -> i <= candidateRoot).stream().noneMatch(i -> candidate % i == 0);
     }
 
     public static <A> List<A> takeWhile(List<A> list, Predicate<A> p) {
