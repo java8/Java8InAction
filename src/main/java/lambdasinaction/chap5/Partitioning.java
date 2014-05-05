@@ -4,6 +4,7 @@ import java.util.*;
 import java.util.function.*;
 import java.util.stream.*;
 
+import static java.util.Comparator.comparingInt;
 import static java.util.stream.Collectors.*;
 import static lambdasinaction.chap5.Dish.menu;
 
@@ -27,7 +28,7 @@ public class Partitioning {
         return menu.stream().collect(
                 partitioningBy(Dish::isVegetarian,
                         collectingAndThen(
-                                reducing((d1, d2) -> d1.getCalories() > d2.getCalories() ? d1 : d2),
+                                maxBy(comparingInt(Dish::getCalories)),
                                 Optional::get)));
     }
 }

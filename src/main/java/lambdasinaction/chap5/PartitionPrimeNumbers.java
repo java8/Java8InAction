@@ -17,23 +17,24 @@ public class PartitionPrimeNumbers {
     }
 
     public static Map<Boolean, List<Integer>> partitionPrimes(int n) {
-        return Stream.iterate(2, i -> i + 1).limit(n-1)
+        return IntStream.rangeClosed(2, n).boxed()
                 .collect(partitioningBy(candidate -> isPrime(candidate)));
     }
 
     public static boolean isPrime(int candidate) {
-        return Stream.iterate(2, i -> i + 1)
+        return IntStream.rangeClosed(2, candidate-1)
                 .limit((long) Math.floor(Math.sqrt((double) candidate)) - 1)
                 .noneMatch(i -> candidate % i == 0);
     }
 
     public static Map<Boolean, List<Integer>> partitionPrimesWithCustomCollector(int n) {
-        return Stream.iterate(2, i -> i + 1).limit(n-1).collect(new PrimeNumbersCollector());
+        return IntStream.rangeClosed(2, n).boxed().collect(new PrimeNumbersCollector());
     }
 
     public static boolean isPrime(List<Integer> primes, Integer candidate) {
         double candidateRoot = Math.sqrt((double) candidate);
-        return takeWhile(primes, i -> i <= candidateRoot).stream().noneMatch(i -> candidate % i == 0);
+        return primes.stream().filter(p -> p < candidateRoot).noneMatch(p -> candidate % p == 0);
+        //return takeWhile(primes, i -> i <= candidateRoot).stream().noneMatch(i -> candidate % i == 0);
     }
 
     public static <A> List<A> takeWhile(List<A> list, Predicate<A> p) {
