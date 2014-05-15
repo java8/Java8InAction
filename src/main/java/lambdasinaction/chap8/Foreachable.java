@@ -1,4 +1,4 @@
-package lambdasinaction.chap7;
+package lambdasinaction.chap8;
 import java.util.function.Consumer;
 
 public interface Foreachable<T> extends Iterable<T>{

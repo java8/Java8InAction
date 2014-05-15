@@ -1,4 +1,4 @@
-package lambdasinaction.chap7;
+package lambdasinaction.chap8;
 
 public class Ambiguous{
 
@@ -7,13 +7,13 @@ public class Ambiguous{
     }
 
     static interface A{
-        public default void hello() { 
+        public default void hello() {
             System.out.println("Hello from A");
         }
     }
 
     static interface B {
-        public default void hello() { 
+        public default void hello() {
             System.out.println("Hello from B");
         }
     }

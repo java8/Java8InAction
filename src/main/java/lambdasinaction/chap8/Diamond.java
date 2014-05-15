@@ -1,7 +1,7 @@
-package lambdasinaction.chap7;
+package lambdasinaction.chap8;
 
 public class Diamond{
-    
+
     public static void main(String...args){
         new D().hello();
     }
@@ -11,13 +11,13 @@ public class Diamond{
             System.out.println("Hello from A");
         }
     }
-    
+
     static interface B extends A { }
-   
+
     static interface C extends A {
     }
 
-    static class D implements B, C { 
-       
+    static class D implements B, C {
+
     }
 }

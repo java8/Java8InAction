@@ -1,6 +1,8 @@
-package lambdasinaction.chap7;
+package lambdasinaction.chap8;
 
-import java.util.*;
+import java.util.Arrays;
+import java.util.Comparator;
+import java.util.List;
 
 public class Intro{
 

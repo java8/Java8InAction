@@ -1,4 +1,4 @@
-package lambdasinaction.chap7;
+package lambdasinaction.chap8;
 
 import java.util.function.Function;
 
@@ -12,7 +12,7 @@ public class Letter{
     }
 
     public static String checkSpelling(String text){
-        return text.replaceAll("C\\+\\+", "**Censored**"); 
+        return text.replaceAll("C\\+\\+", "**Censored**");
     }
 
 
