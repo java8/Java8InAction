@@ -28,15 +28,13 @@ The source code for all examples can be found in the directory [src/main/java/la
 We will update the repository as we update the book. Stay tuned!
 
 ### Make sure to have JDK8 installed
-For example:
+The latest binary can be found here: http://www.oracle.com/technetwork/java/javase/overview/java8-2100321.html
 
 $ java -version
 
-java version "1.8.0-ea"
-
-Java(TM) SE Runtime Environment (build 1.8.0-ea-lambda-nightly-h109-20130902-b106-b00)
-
-Java HotSpot(TM) 64-Bit Server VM (build 25.0-b45, mixed mode)
+java version "1.8.0_05"
+Java(TM) SE Runtime Environment (build 1.8.0_05-b13)
+Java HotSpot(TM) 64-Bit Server VM (build 25.5-b02, mixed mode)
 
 
 You can download a preview version here: https://jdk8.java.net/
