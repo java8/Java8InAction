@@ -16,5 +16,4 @@ public class Combinators {
     static <A> Function<A,A> repeat(int n, Function<A,A> f) {
         return n==0?x->x : compose(f, (Function<A,A>) repeat(n-1, f));
     }
-
 }
