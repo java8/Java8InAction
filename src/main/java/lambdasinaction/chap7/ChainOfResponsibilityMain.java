@@ -3,9 +3,7 @@ package lambdasinaction.chap7;
 import java.util.function.Function;
 import java.util.function.UnaryOperator;
 
-/**
- * Created by raoul-gabrielurma on 16/05/2014.
- */
+
 public class ChainOfResponsibilityMain {
 
     public static void main(String[] args) {

@@ -5,9 +5,7 @@ import java.util.stream.Stream;
 
 import static java.util.stream.Collectors.toList;
 
-/**
- * Created by raoul-gabrielurma on 16/05/2014.
- */
+
 public class Peek {
 
     public static void main(String[] args) {

@@ -1,8 +1,6 @@
 package lambdasinaction.chap7;
 
-/**
- * Created by raoul-gabrielurma on 16/05/2014.
- */
+
 import java.util.*;
 
 public class Debugging{

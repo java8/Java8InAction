@@ -4,9 +4,7 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.function.Supplier;
 
-/**
- * Created by raoul-gabrielurma on 16/05/2014.
- */
+
 public class FactoryMain {
 
     public static void main(String[] args) {

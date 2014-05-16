@@ -3,9 +3,7 @@ package lambdasinaction.chap13;
 import java.util.function.Supplier;
 import java.util.function.Predicate;
 
-/**
- * Created by raoul-gabrielurma on 16/05/2014.
- */
+
 public class LazyLists {
 
 

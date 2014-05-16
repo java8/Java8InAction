@@ -1,8 +1,6 @@
 package lambdasinaction.chap7;
 
-/**
- * Created by raoul-gabrielurma on 16/05/2014.
- */
+
 abstract class OnlineBanking {
     public void processCustomer(int id){
         Customer c = Database.getCustomerWithId(id);

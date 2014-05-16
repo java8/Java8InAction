@@ -2,9 +2,7 @@ package lambdasinaction.chap12;
 
 import java.util.stream.LongStream;
 
-/**
- * Created by raoul-gabrielurma on 16/05/2014.
- */
+
 public class Recursion {
 
     public static void main(String[] args) {

@@ -5,9 +5,7 @@ import java.util.List;
 import java.util.Observable;
 import java.util.Observer;
 
-/**
- * Created by raoul-gabrielurma on 16/05/2014.
- */
+
 public class ObserverMain {
 
     public static void main(String[] args) {

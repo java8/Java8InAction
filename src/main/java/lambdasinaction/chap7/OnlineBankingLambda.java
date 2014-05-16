@@ -2,9 +2,7 @@ package lambdasinaction.chap7;
 
 import java.util.function.Consumer;
 
-/**
- * Created by raoul-gabrielurma on 16/05/2014.
- */
+
 public class OnlineBankingLambda {
 
     public static void main(String[] args) {
