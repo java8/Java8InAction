@@ -38,7 +38,7 @@ public class Grouping {
     private static Map<Dish.Type, Map<CaloricLevel, List<Dish>>> groupDishedByTypeAndCaloricLevel() {
         return menu.stream().collect(
                 groupingBy(Dish::getType,
-                        groupingBy(dish -> {
+                        groupingBy((Dish dish) -> {
                             if (dish.getCalories() <= 400) return CaloricLevel.DIET;
                             else if (dish.getCalories() <= 700) return CaloricLevel.NORMAL;
                             else return CaloricLevel.FAT;
@@ -54,7 +54,7 @@ public class Grouping {
     private static Map<Dish.Type, Optional<Dish>> mostCaloricDishesByType() {
         return menu.stream().collect(
                 groupingBy(Dish::getType,
-                        reducing((d1, d2) -> d1.getCalories() > d2.getCalories() ? d1 : d2)));
+                        reducing((Dish d1, Dish d2) -> d1.getCalories() > d2.getCalories() ? d1 : d2)));
     }
 
     private static Map<Dish.Type, Dish> mostCaloricDishesByTypeWithoutOprionals() {
