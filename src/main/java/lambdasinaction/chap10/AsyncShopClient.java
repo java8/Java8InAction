@@ -1,6 +1,6 @@
 package lambdasinaction.chap10;
 
-import java.util.concurrent.*;
+import java.util.concurrent.Future;
 
 public class AsyncShopClient {
 

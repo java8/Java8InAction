@@ -1,15 +1,27 @@
 package lambdasinaction.chap11;
 
-import java.text.*;
-import java.time.*;
-import java.time.chrono.*;
-import java.time.format.*;
-import java.time.temporal.*;
-import java.util.*;
+import static java.time.temporal.TemporalAdjusters.lastDayOfMonth;
+import static java.time.temporal.TemporalAdjusters.nextOrSame;
 
-import static java.time.temporal.ChronoField.DAY_OF_WEEK;
-import static java.time.temporal.ChronoUnit.DAYS;
-import static java.time.temporal.TemporalAdjusters.*;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.time.DayOfWeek;
+import java.time.Duration;
+import java.time.Instant;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.LocalTime;
+import java.time.Month;
+import java.time.chrono.JapaneseDate;
+import java.time.format.DateTimeFormatter;
+import java.time.format.DateTimeFormatterBuilder;
+import java.time.temporal.ChronoField;
+import java.time.temporal.ChronoUnit;
+import java.time.temporal.Temporal;
+import java.time.temporal.TemporalAdjuster;
+import java.util.Calendar;
+import java.util.Date;
+import java.util.Locale;
 
 public class DateTimeExamples {
 
@@ -20,9 +32,9 @@ public class DateTimeExamples {
     };
 
     public static void main(String[] args) {
-        //useOldDate();
+        useOldDate();
         useLocalDate();
-        //useTemporalAdjuster();
+        useTemporalAdjuster();
         useDateFormatter();
     }
 
@@ -33,7 +45,7 @@ public class DateTimeExamples {
         System.out.println(formatters.get().format(date));
 
         Calendar calendar = Calendar.getInstance();
-        calendar.set(2014, 2, 18);
+        calendar.set(2014, Calendar.FEBRUARY, 18);
         System.out.println(calendar);
     }
 
@@ -101,11 +113,11 @@ public class DateTimeExamples {
         date = date.with(nextOrSame(DayOfWeek.FRIDAY));
         System.out.println(date);
         date = date.with(temporal -> {
-            int dow = temporal.get(DAY_OF_WEEK);
+            DayOfWeek dow = DayOfWeek.of(temporal.get(ChronoField.DAY_OF_WEEK));
             int dayToAdd = 1;
-            if (dow == 5) dayToAdd = 3;
-            if (dow == 6) dayToAdd = 2;
-            return temporal.plus(dayToAdd, DAYS);
+            if (dow == DayOfWeek.FRIDAY) dayToAdd = 3;
+            if (dow == DayOfWeek.SATURDAY) dayToAdd = 2;
+            return temporal.plus(dayToAdd, ChronoUnit.DAYS);
         });
         System.out.println(date);
     }
@@ -113,10 +125,10 @@ public class DateTimeExamples {
     private static class NextWorkingDay implements TemporalAdjuster {
         @Override
         public Temporal adjustInto(Temporal temporal) {
-            int dow = temporal.get(ChronoField.DAY_OF_WEEK);
+            DayOfWeek dow = DayOfWeek.of(temporal.get(ChronoField.DAY_OF_WEEK));
             int dayToAdd = 1;
-            if (dow == 5) dayToAdd = 3;
-            if (dow == 6) dayToAdd = 2;
+            if (dow == DayOfWeek.FRIDAY) dayToAdd = 3;
+            if (dow == DayOfWeek.SATURDAY) dayToAdd = 2;
             return temporal.plus(dayToAdd, ChronoUnit.DAYS);
         }
     }

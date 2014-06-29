@@ -1,9 +1,12 @@
 package lambdasinaction.chap10;
 
-import java.text.*;
-import java.util.*;
-import java.util.concurrent.*;
-import java.util.stream.*;
+import java.text.DecimalFormat;
+import java.text.DecimalFormatSymbols;
+import java.util.List;
+import java.util.Locale;
+import java.util.Random;
+import java.util.concurrent.CompletableFuture;
+import java.util.stream.Collectors;
 
 public class Util {
 

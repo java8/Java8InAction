@@ -32,8 +32,8 @@ public class Mapping{
         List<Integer> numbers2 = Arrays.asList(6,7,8);
         List<int[]> pairs =
                         numbers1.stream()
-                                .flatMap(i -> numbers2.stream()
-                                                       .map(j -> new int[]{i, j})
+                                .flatMap((Integer i) -> numbers2.stream()
+                                                       .map((Integer j) -> new int[]{i, j})
                                  )
                                 .filter(pair -> (pair[0] + pair[1]) % 3 == 0)
                                 .collect(toList());

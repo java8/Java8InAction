@@ -1,8 +1,13 @@
 package lambdasinaction.chap10;
 
-import java.util.*;
-import java.util.concurrent.*;
-import java.util.stream.*;
+import java.util.Arrays;
+import java.util.List;
+import java.util.concurrent.CompletableFuture;
+import java.util.concurrent.Executor;
+import java.util.concurrent.Executors;
+import java.util.concurrent.ThreadFactory;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 public class BestPriceFinder {
 
@@ -20,34 +25,8 @@ public class BestPriceFinder {
             return t;
         }
     });
-/*
-    public List<String> findPriceSequential(String product) {
-        return shops.stream()
-                .map(shop -> shop.getName() + " price is " + shop.calculatePrice(product))
-                .collect(Collectors.toList());
-    }
 
-    public List<String> findPriceParallel(String product) {
-        return shops.parallelStream()
-                .map(shop -> shop.getName() + " price is " + shop.calculatePrice(product))
-                .collect(Collectors.toList());
-    }
-
-    public List<String> findPrice(String product) {
-        List<CompletableFuture<String>> priceFutures =
-                shops.stream()
-                .map(shop -> CompletableFuture.supplyAsync(() -> shop.getName() + " price is "
-                        + shop.calculatePrice(product), executor))
-                .collect(Collectors.toList());
-
-        List<String> prices = priceFutures.stream()
-                .map(CompletableFuture::join)
-                .collect(Collectors.toList());
-        return prices;
-        //return sequence(priceFutures).join();
-    }
-/*/
-    public List<String> findPriceSequential(String product) {
+    public List<String> findPricesSequential(String product) {
         return shops.stream()
                 .map(shop -> shop.getPrice(product))
                 .map(Quote::parse)
@@ -55,7 +34,7 @@ public class BestPriceFinder {
                 .collect(Collectors.toList());
     }
 
-    public List<String> findPriceParallel(String product) {
+    public List<String> findPricesParallel(String product) {
         return shops.parallelStream()
                 .map(shop -> shop.getPrice(product))
                 .map(Quote::parse)
@@ -63,8 +42,8 @@ public class BestPriceFinder {
                 .collect(Collectors.toList());
     }
 
-    public List<String> findPrice(String product) {
-        List<CompletableFuture<String>> priceFutures = findPriceStream(product)
+    public List<String> findPricesFuture(String product) {
+        List<CompletableFuture<String>> priceFutures = findPricesStream(product)
                 .collect(Collectors.<CompletableFuture<String>>toList());
 
         return priceFutures.stream()
@@ -72,16 +51,16 @@ public class BestPriceFinder {
                 .collect(Collectors.toList());
     }
 
-    public Stream<CompletableFuture<String>> findPriceStream(String product) {
+    public Stream<CompletableFuture<String>> findPricesStream(String product) {
         return shops.stream()
                 .map(shop -> CompletableFuture.supplyAsync(() -> shop.getPrice(product), executor))
                 .map(future -> future.thenApply(Quote::parse))
                 .map(future -> future.thenCompose(quote -> CompletableFuture.supplyAsync(() -> Discount.applyDiscount(quote), executor)));
     }
 
-    public void printPricesStream() {
+    public void printPricesStream(String product) {
         long start = System.nanoTime();
-        CompletableFuture[] futures = findPriceStream("myPhone")
+        CompletableFuture[] futures = findPricesStream(product)
                 .map(f -> f.thenAccept(s -> System.out.println(s + " (done in " + ((System.nanoTime() - start) / 1_000_000) + " msecs)")))
                 .toArray(size -> new CompletableFuture[size]);
         CompletableFuture.allOf(futures).join();
