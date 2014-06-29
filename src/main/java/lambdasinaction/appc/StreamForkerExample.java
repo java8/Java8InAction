@@ -1,4 +1,4 @@
-package lambdasinaction.chap6;
+package lambdasinaction.appc;
 
 import lambdasinaction.chap5.*;
 
