@@ -1,34 +1,31 @@
 package lambdasinaction.chap5;
+import lambdasinaction.chap4.*;
 
-import java.util.*;
-import java.util.function.*;
 import java.util.stream.*;
+import java.util.*;
 
-import static java.util.stream.Collectors.*;
-import static lambdasinaction.chap5.Dish.menu;
+import static lambdasinaction.chap4.Dish.menu;
 
-public class Reducing {
+public class Reducing{
 
-    public static void main(String ... args) {
-        System.out.println("Total calories in menu: " + calculateTotalCalories());
-        System.out.println("Total calories in menu: " + calculateTotalCaloriesWithMethodReference());
-        System.out.println("Total calories in menu: " + calculateTotalCaloriesWithoutCollectors());
-        System.out.println("Total calories in menu: " + calculateTotalCaloriesUsingSum());
-    }
+    public static void main(String...args){
 
-    private static int calculateTotalCalories() {
-        return menu.stream().collect(reducing(0, Dish::getCalories, (Integer i, Integer j) -> i + j));
-    }
+        List<Integer> numbers = Arrays.asList(3,4,5,1,2);
+        int sum = numbers.stream().reduce(0, (a, b) -> a + b);
+        System.out.println(sum);
 
-    private static int calculateTotalCaloriesWithMethodReference() {
-        return menu.stream().collect(reducing(0, Dish::getCalories, Integer::sum));
-    }
+        int sum2 = numbers.stream().reduce(0, Integer::sum);
+        System.out.println(sum2);
 
-    private static int calculateTotalCaloriesWithoutCollectors() {
-        return menu.stream().map(Dish::getCalories).reduce(Integer::sum).get();
-    }
+        int max = numbers.stream().reduce(0, (a, b) -> Integer.max(a, b));
+        System.out.println(max);
 
-    private static int calculateTotalCaloriesUsingSum() {
-        return menu.stream().mapToInt(Dish::getCalories).sum();
+        Optional<Integer> min = numbers.stream().reduce(Integer::min);
+        min.ifPresent(System.out::println);
+
+        int calories = menu.stream()
+                           .map(Dish::getCalories)
+                           .reduce(0, Integer::sum);
+        System.out.println("Number of calories:" + calories);
     }
 }
