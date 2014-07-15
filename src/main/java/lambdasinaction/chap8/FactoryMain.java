@@ -40,7 +40,7 @@ public class FactoryMain {
     static private class Bond implements Product {}
 
     final static private Map<String, Supplier<Product>> map = new HashMap<>();
-    {
+    static {
         map.put("loan", Loan::new);
         map.put("stock", Stock::new);
         map.put("bond", Bond::new);
