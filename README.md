@@ -52,3 +52,8 @@ $ java lambdasinaction/chap1/FilteringApples
 
 
 Alternatively you can compile the files manually inside the directory src/main/java
+
+You can also import the project in your favorite IDE:
+    * In IntelliJ use "File->Open" menu and navigate to the folder where the project resides
+    * In Eclipse use "File->Import->Existing Maven Projects" (also modify "Reduntant super interfaces" to report as Warnings instead of Errors
+    * In Netbeans use "File->Open Project" menu
