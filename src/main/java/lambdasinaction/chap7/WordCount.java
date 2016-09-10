@@ -83,8 +83,12 @@ public class WordCount {
 
         @Override
         public boolean tryAdvance(Consumer<? super Character> action) {
-            action.accept(string.charAt(currentChar++));
-            return currentChar < string.length();
+            if(currentChar < string.length()) {
+                action.accept(string.charAt(currentChar++));
+                return true;
+            } else {
+                return false;
+            }
         }
 
         @Override
