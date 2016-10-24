@@ -15,7 +15,7 @@ public class Grouping {
         System.out.println("Dishes grouped by type and caloric level: " + groupDishedByTypeAndCaloricLevel());
         System.out.println("Count dishes in groups: " + countDishesInGroups());
         System.out.println("Most caloric dishes by type: " + mostCaloricDishesByType());
-        System.out.println("Most caloric dishes by type: " + mostCaloricDishesByTypeWithoutOprionals());
+        System.out.println("Most caloric dishes by type: " + mostCaloricDishesByTypeWithoutOptionals());
         System.out.println("Sum calories by type: " + sumCaloriesByType());
         System.out.println("Caloric levels by type: " + caloricLevelsByType());
     }
@@ -55,7 +55,7 @@ public class Grouping {
                         reducing((Dish d1, Dish d2) -> d1.getCalories() > d2.getCalories() ? d1 : d2)));
     }
 
-    private static Map<Dish.Type, Dish> mostCaloricDishesByTypeWithoutOprionals() {
+    private static Map<Dish.Type, Dish> mostCaloricDishesByTypeWithoutOptionals() {
         return menu.stream().collect(
                 groupingBy(Dish::getType,
                         collectingAndThen(
