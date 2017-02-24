@@ -32,10 +32,10 @@ public class PartitionPrimeNumbers {
 
     public static boolean isPrime(List<Integer> primes, Integer candidate) {
         double candidateRoot = Math.sqrt((double) candidate);
-        //return primes.stream().filter(p -> p < candidateRoot).noneMatch(p -> candidate % p == 0);
-        return takeWhile(primes, i -> i <= candidateRoot).stream().noneMatch(i -> candidate % i == 0);
+        //return takeWhile(primes, i -> i <= candidateRoot).stream().noneMatch(i -> candidate % i == 0);
+        return primes.stream().takeWhile(i -> i <= candidateRoot).noneMatch(i -> candidate % i == 0);
     }
-
+/*
     public static <A> List<A> takeWhile(List<A> list, Predicate<A> p) {
         int i = 0;
         for (A item : list) {
@@ -46,7 +46,7 @@ public class PartitionPrimeNumbers {
         }
         return list;
     }
-
+*/
     public static class PrimeNumbersCollector
             implements Collector<Integer, Map<Boolean, List<Integer>>, Map<Boolean, List<Integer>>> {
 
