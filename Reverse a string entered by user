@@ -1,0 +1,20 @@
+import java.util.Scanner;
+public class JavaBase {
+
+    public static void main(String[] args) {
+        String a;
+        System.out.println("Enter your username: ");
+        Scanner scanner = new Scanner(System.in);
+        a = scanner.nextLine();
+        scanner.close();
+        String reversed = reverseString(a);
+        System.out.println("The reversed string is: " + reversed);
+    }
+
+    public static String reverseString(String a)
+    {
+        if (a.isEmpty())
+            return a;
+        return reverseString(a.substring(1)) + a.charAt(0);
+    }
+}
