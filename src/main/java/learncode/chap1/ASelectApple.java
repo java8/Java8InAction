@@ -1,17 +1,22 @@
-package learncode;
+package learncode.chap1;
+
+import learncode.commons.Apple;
 
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.function.Predicate;
+import java.util.stream.Collectors;
+
+import static java.util.stream.Collectors.toList;
 
 /**
- * @Description TODO
+ * @Description
  * @Author YC
  * @Date 2019/8/2 0:39
  * @Version 1.0
  */
-public class SelectApple {
+public class ASelectApple {
 
     // 选出所有的绿色苹果
     public static List<Apple> filterGreenApples(List<Apple> inventry) {
@@ -46,51 +51,15 @@ public class SelectApple {
         System.out.println(greenApples);
 
         // 2. 函数引用
-        List<Apple> greens = filterApples(apples, SelectApple::isGreenApple);
+        List<Apple> greens = filterApples(apples, ASelectApple::isGreenApple);
 
-        // 3. 
-    }
+        // 3. 顺序处理
+        List<Apple> collect = apples.stream().filter((Apple a) -> a.getWeight() > 80).collect(toList());
+        System.out.println(collect);
 
-}
-
-class Apple {
-    private String color;
-    private int weight;
-
-    public int getWeight() {
-        return weight;
-    }
-
-    @Override
-    public String toString() {
-        return "Apple{" +
-                "color='" + color + '\'' +
-                ", weight=" + weight +
-                '}';
-    }
-
-    public Apple(String color, int weight) {
-        this.color = color;
-        this.weight = weight;
-    }
-
-    public void setWeight(int weight) {
-        this.weight = weight;
-    }
-
-    public Apple() {
-    }
-
-    public Apple(String color) {
-        this.color = color;
-    }
-
-    public String getColor() {
-        return color;
-    }
-
-    public void setColor(String color) {
-        this.color = color;
+        // 4. 并行处理
+        List<Apple> collect1 = apples.parallelStream().filter((Apple a) -> a.getWeight() > 80).collect(toList());
+        System.out.println(collect1);
     }
 
 }
