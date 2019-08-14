@@ -17,30 +17,30 @@ public class Sorting {
 
         // reshuffling things a little
         inventory.set(1, new Apple(30, "green"));
-        
+
         // 2
         // [Apple{color='green', weight=30}, Apple{color='green', weight=80}, Apple{color='green', weight=155}]
         inventory.sort(new Comparator<Apple>() {
             public int compare(Apple a1, Apple a2){
-                return a1.getWeight().compareTo(a2.getWeight()); 
+                return a1.getWeight().compareTo(a2.getWeight());
         }});
         System.out.println(inventory);
 
         // reshuffling things a little
         inventory.set(1, new Apple(20, "red"));
-        
+
         // 3
         // [Apple{color='red', weight=20}, Apple{color='green', weight=30}, Apple{color='green', weight=155}]
         inventory.sort((a1, a2) -> a1.getWeight().compareTo(a2.getWeight()));
         System.out.println(inventory);
-        
+
         // reshuffling things a little
         inventory.set(1, new Apple(10, "red"));
-        
+
         // 4
         // [Apple{color='red', weight=10}, Apple{color='red', weight=20}, Apple{color='green', weight=155}]
         inventory.sort(comparing(Apple::getWeight));
-        System.out.println(inventory);       
+        System.out.println(inventory);
     }
 
     public static class Apple {

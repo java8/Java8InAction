@@ -4,6 +4,9 @@ import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.function.Predicate;
 
 /**
  * @Description TODO
@@ -27,6 +30,18 @@ public class ALambda {
         process(()-> System.out.println("Hello world 3"));
 
         String s1 = processFile((BufferedReader br) -> br.readLine());
+
+//        (List<String> list) -> list.isEmpty()
+    }
+
+    public static List<String> result(List<String> list, Predicate<String> p) {
+        List<String> lists = new ArrayList<>();
+        for (String s : list) {
+            if (p.test(s)) {
+                list.add(s);
+            }
+        }
+        return lists;
     }
 
     public static void process(Runnable r) {
