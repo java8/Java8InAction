@@ -8,7 +8,7 @@ import static lambdasinaction.chap7.ParallelStreamsHarness.FORK_JOIN_POOL;
 
 public class ForkJoinSumCalculator extends RecursiveTask<Long> {
 
-    public static final long THRESHOLD = 10_000;
+    private static final long THRESHOLD = 10_000;
 
     private final long[] numbers;
     private final int start;
