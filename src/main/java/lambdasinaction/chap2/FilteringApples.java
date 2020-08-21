@@ -35,7 +35,10 @@ public class FilteringApples{
 			}
 		});
 		System.out.println(redApples2);
-
+		//跟上面以内部类实现的方法比对一下，lambda表达式把匿名内部类的方法直接当参数
+		List<Apple> result = filterT(inventory,(Apple apple) -> "red".equals(apple.getColor()));
+		System.out.println("----------------");
+		System.out.println(result);
 	}
 
 	public static List<Apple> filterGreenApples(List<Apple> inventory){
@@ -78,6 +81,7 @@ public class FilteringApples{
 		}
 		return result;
 	}       
+
 
 	public static class Apple {
 		private int weight = 0;
@@ -132,5 +136,19 @@ public class FilteringApples{
 			return "red".equals(apple.getColor()) 
 					&& apple.getWeight() > 150; 
 		}
+	}
+	//在最后继续抽象
+	public interface Predicate<T>{
+		boolean test(T t);
+	}
+	//抽象带师,把apple抽象掉
+	public static <T> List<T> filterT(List<T> list,Predicate<T> p){
+		List<T> result = new ArrayList<>();
+		for (T t:list){
+			if (p.test(t)){
+				result.add(t);
+			}
+		}
+		return result;
 	}
 }
