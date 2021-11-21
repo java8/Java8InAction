@@ -31,7 +31,7 @@ public class Java8Stream {
 		//Collectors.toSet()结果转set
 		Set<Integer> resultSet2=list.stream().collect(Collectors.toSet());
 		System.out.println("====after resultSet2:"+resultSet2);
-		
+
 		//peek：如同于map，能得到流中的每一个元素。但map接收的是一个Function表达式，有返回值；而peek接收的是Consumer表达式，没有返回值。
 		List<Integer> resultList3=list.stream().peek(e->System.out.println("print e:"+e)).collect(Collectors.toList());
 		System.out.println("====after resultList3:"+resultList3);
@@ -73,6 +73,21 @@ public class Java8Stream {
 		List<Integer> flatList2 = bigList.stream().flatMap(e->e.stream().distinct()).collect(Collectors.toList());//子流去重后，再合入大流。
 		System.out.println("====after flatList2:"+flatList2);
 
+		/**Collectors.groupingBy(Function<T,K> f). 根据function f的入参类型T和返回类型K，生成一个Collector对象。
+		 * return Collector<T, ?, Map<K, List<T>>>。Collector对象做了分组。
+		 * 配合collect()方法最后，最终返回一个map,T类型是key，List<K>是value。
+		 * collect.(Collectors.groupingBy(Student::getName))表示function f的入参是String(name),返回类型是String,
+		 * 最终collect之后，返回Map<String,List<>> TODO
+		 */
+		Map<String,List<Student>> map = students.stream().collect(Collectors.groupingBy(Student::getName));
+		System.out.println("grouping by name. map:"+map);
+
+		/**TODO Collector 接口
+		 * https://blog.csdn.net/litte_frog/article/details/88357182
+		 */
+
+
+
 		//stream.forEach(Consumer)。将集合的每个元素，用Consumer指定的方法依次处理。
 		list.stream().forEach(e->System.out.println("foreach的操作每个元素："+e));
 		list.forEach(e->System.out.println("foreach2的操作每个元素："+e));//同上句效果
@@ -106,6 +121,7 @@ public class Java8Stream {
 
 
 		/**output
+		 * 注：没有其他操作时，stream结果的输出顺序，是开始放入时的顺序。
 		====origainl:[9, 8, 7, 6, 5, 4, 3, 2, 1, 0]
 		====after:[9, 25, 49, 81]
 		
@@ -122,7 +138,7 @@ public class Java8Stream {
 		peek(Consumer c) 
 		...
 		
-		Collectors TODO
+		Collectors 接口 TODO
 		
 		流的终止操作
 		stream.xx()
@@ -141,7 +157,8 @@ public class Java8Stream {
 		*/
 		
 		//TODO parallel, Collectors, 统计, forEach, 
-		//Collectors.groupingBy,Collectors.partitioningBy,Collectors.reducing,Collectors.joining,Collectors.maxBy,Collectors.summingInt,Collectors.summarizingDouble
+		//Collectors.groupingBy,Collectors.partitioningBy,Collectors.reducing,
+		// Collectors.joining,Collectors.maxBy,Collectors.summingInt,Collectors.summarizingDouble
 		
 	}
 
