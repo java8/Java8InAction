@@ -201,7 +201,7 @@ public class Java8Stream {
 		 */
 	}
 	
-	public static class Student{
+	public static class Student{  
 		private String name;
 		private int age;
 		public Student(String name, int age) {
@@ -230,6 +230,6 @@ public class Java8Stream {
 					'}';
 		}
 	}
-	
+
 
 }
