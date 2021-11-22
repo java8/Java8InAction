@@ -202,11 +202,11 @@ public class Java8Stream {
 	}
 	
 	public static class Student{
-		private String name; 
+		private String name;
 		private int age;
 		public Student(String name, int age) {
 			super();
-			this.name = name;
+			this.name = name; 
 			this.age = age;
 		}
 		public String getName() {
