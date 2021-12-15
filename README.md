@@ -29,13 +29,13 @@ The source code for all examples can be found in the directory [src/main/java/la
 * Appendix D: Lambdas and JVM bytecode
 We will update the repository as we update the book. Stay tuned!
 
-### Make sure to have JDK8 installed
+### Make sure to have JDK9 installed
 The latest binary can be found here: http://www.oracle.com/technetwork/java/javase/overview/java8-2100321.html
 
 $ java -version
 
-java version "1.8.0_05"
-Java(TM) SE Runtime Environment (build 1.8.0_05-b13)
+java version "1.9"
+Java(TM) SE Runtime Environment (build 1.9)
 Java HotSpot(TM) 64-Bit Server VM (build 25.5-b02, mixed mode)
 
 
