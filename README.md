@@ -28,7 +28,7 @@ The source code for all examples can be found in the directory [src/main/java/la
 * Appendix C: Performing multiple operations in parallel on a Stream
 * Appendix D: Lambdas and JVM bytecode
 We will update the repository as we update the book. Stay tuned!
-
+# change made
 ### Make sure to have JDK8 installed
 The latest binary can be found here: http://www.oracle.com/technetwork/java/javase/overview/java8-2100321.html
 
