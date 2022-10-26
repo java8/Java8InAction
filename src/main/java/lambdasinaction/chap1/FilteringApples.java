@@ -16,28 +16,29 @@ public class FilteringApples {
 
 
         // 原始形式迭代遍历判断
-        System.out.println(filterGreenApples(inventory));
+        System.out.println("原始形式迭代查找结果 :" + filterGreenApples(inventory));
 
-        // [Apple{color='green', weight=80}, Apple{color='green', weight=155}]
+        // 谓词形式 + 函数
         List<Apple> greenApples = filterApples(inventory, FilteringApples::isGreenApple);
         System.out.println(greenApples);
 
-        // [Apple{color='green', weight=80}, Apple{color='green', weight=155}]
+        // 谓词形式 + Lambda 匿名函数表达式
         List<Apple> greenApples2 = filterApples(inventory, (Apple a) -> "green".equals(a.getColor()));
         System.out.println(greenApples2);
 
-        // [Apple{color='green', weight=155}]
+        System.out.println("原始形式迭代查找结果 :" + filterHeavyApples(inventory));
+
+        // 谓词形式 + 函数
         List<Apple> heavyApples = filterApples(inventory, FilteringApples::isHeavyApple);
         System.out.println(heavyApples);
 
-
-        // [Apple{color='green', weight=155}]
+        // 谓词形式 + Lambda 匿名函数表达式
         List<Apple> heavyApples2 = filterApples(inventory, (Apple a) -> a.getWeight() > 150);
         System.out.println(heavyApples2);
 
-        // []
-        List<Apple> weirdApples = filterApples(inventory, (Apple a) -> a.getWeight() < 80 || "brown".equals(a.getColor()));
-        System.out.println(weirdApples);
+        // 查找小于130或者为红色
+        List<Apple> wantedApples = filterApples(inventory, (Apple a) -> a.getWeight() < 130 || "green".equals(a.getColor()));
+        System.out.println(wantedApples);
     }
 
     public static List<Apple> filterGreenApples(List<Apple> inventory) {
