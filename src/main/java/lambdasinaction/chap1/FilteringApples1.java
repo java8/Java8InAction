@@ -1,8 +1,8 @@
-package lambdasinaction.chap2;
+package lambdasinaction.chap1;
 
 import java.util.*;
 
-public class FilteringApples{
+public class FilteringApples1 {
 
 	public static void main(String ... args){
 
