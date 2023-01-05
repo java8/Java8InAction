@@ -26,6 +26,7 @@ public class FilteringApples {
         List<Apple> greenApples2 = filterApples(inventory, (Apple a) -> "green".equals(a.getColor()));
         System.out.println(greenApples2);
 
+        // 原始形式便利判断
         System.out.println("原始形式迭代查找结果 :" + filterHeavyApples(inventory));
 
         // 谓词形式 + 函数
@@ -79,37 +80,5 @@ public class FilteringApples {
         return result;
     }
 
-    public static class Apple {
-        private int weight;
-        private String color;
-
-        public Apple(int weight, String color) {
-            this.weight = weight;
-            this.color = color;
-        }
-
-        public Integer getWeight() {
-            return weight;
-        }
-
-        public void setWeight(Integer weight) {
-            this.weight = weight;
-        }
-
-        public String getColor() {
-            return color;
-        }
-
-        public void setColor(String color) {
-            this.color = color;
-        }
-
-        public String toString() {
-            return "Apple{" +
-                    "color='" + color + '\'' +
-                    ", weight=" + weight +
-                    '}';
-        }
-    }
 
 }
