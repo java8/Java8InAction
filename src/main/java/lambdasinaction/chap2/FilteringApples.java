@@ -1,19 +1,22 @@
 package lambdasinaction.chap2;
 
 import java.util.*;
+import static lambdasinaction.chap2.Colour.*;
 
 public class FilteringApples{
 
 	public static void main(String ... args){
 
-		List<Apple> inventory = Arrays.asList(new Apple(80,"green"), new Apple(155, "green"), new Apple(120, "red"));	
+		List<Apple> inventory = Arrays.asList(new Apple(80,GREEN),
+									new Apple(155, GREEN),
+									new Apple(120, RED));
 
 		// [Apple{color='green', weight=80}, Apple{color='green', weight=155}]
-		List<Apple> greenApples = filterApplesByColor(inventory, "green");
+		List<Apple> greenApples = filterApplesByColor(inventory, GREEN);
 		System.out.println(greenApples);
 
 		// [Apple{color='red', weight=120}]
-		List<Apple> redApples = filterApplesByColor(inventory, "red");
+		List<Apple> redApples = filterApplesByColor(inventory, RED);
 		System.out.println(redApples);
 
 		// [Apple{color='green', weight=80}, Apple{color='green', weight=155}]
@@ -41,14 +44,14 @@ public class FilteringApples{
 	public static List<Apple> filterGreenApples(List<Apple> inventory){
 		List<Apple> result = new ArrayList<>();
 		for(Apple apple: inventory){
-			if("green".equals(apple.getColor())){
+			if(GREEN.equals(apple.getColor())){
 				result.add(apple);
 			}
 		}
 		return result;
 	}
 
-	public static List<Apple> filterApplesByColor(List<Apple> inventory, String color){
+	public static List<Apple> filterApplesByColor(List<Apple> inventory, Colour color){
 		List<Apple> result = new ArrayList<>();
 		for(Apple apple: inventory){
 			if(apple.getColor().equals(color)){
@@ -81,9 +84,9 @@ public class FilteringApples{
 
 	public static class Apple {
 		private int weight = 0;
-		private String color = "";
+		private Colour color;
 
-		public Apple(int weight, String color){
+		public Apple(int weight, Colour color){
 			this.weight = weight;
 			this.color = color;
 		}
@@ -96,11 +99,11 @@ public class FilteringApples{
 			this.weight = weight;
 		}
 
-		public String getColor() {
+		public Colour getColor() {
 			return color;
 		}
 
-		public void setColor(String color) {
+		public void setColor(Colour color) {
 			this.color = color;
 		}
 
@@ -123,7 +126,7 @@ public class FilteringApples{
 	}
 	static class AppleColorPredicate implements ApplePredicate{
 		public boolean test(Apple apple){
-			return "green".equals(apple.getColor());
+			return GREEN.equals(apple.getColor());
 		}
 	}
 
